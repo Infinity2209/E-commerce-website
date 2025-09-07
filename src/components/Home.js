@@ -18,7 +18,7 @@ const Home = () => {
 
     const fetchFeaturedItems = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/items?limit=8');
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/items?limit=8`);
             setFeaturedItems(res.data.items || res.data || []);
         } catch (error) {
             console.error(error);

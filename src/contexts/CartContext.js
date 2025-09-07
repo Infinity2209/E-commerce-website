@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
 
         setLoading(true);
         try {
-            const res = await axios.get('http://localhost:5000/api/cart', {
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cart`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setCart(res.data);
@@ -38,7 +38,7 @@ export const CartProvider = ({ children }) => {
     // Add item to cart
     const addToCart = async (itemId, quantity = 1) => {
         try {
-            const res = await axios.post('http://localhost:5000/api/cart/add',
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/cart/add`,
                 { itemId, quantity },
                 {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }) => {
     const updateQuantity = async (itemId, quantity) => {
         if (quantity < 1) return;
         try {
-            const res = await axios.post('http://localhost:5000/api/cart/update',
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/cart/update`,
                 { itemId, quantity },
                 {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -73,7 +73,7 @@ export const CartProvider = ({ children }) => {
     // Remove item from cart
     const removeFromCart = async (itemId) => {
         try {
-            const res = await axios.post('http://localhost:5000/api/cart/remove',
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/cart/remove`,
                 { itemId },
                 {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }

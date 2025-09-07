@@ -27,7 +27,7 @@ const Listing = () => {
             const query = new URLSearchParams(params).toString();
             const token = localStorage.getItem('token');
             const headers = token ? { Authorization: `Bearer ${token}` } : {};
-            const res = await axios.get(`http://localhost:5000/api/items?${query}`, { headers });
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/items?${query}`, { headers });
             if (res.data && res.data.items) {
                 setItems(res.data.items);
                 setTotalPages(res.data.totalPages || 1);

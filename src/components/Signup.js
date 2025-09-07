@@ -26,7 +26,7 @@ const Signup = ({ onLogin }) => {
         e.preventDefault();
         if (!validateForm()) return;
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/signup', {
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/signup`, {
                 username: form.username,
                 email: form.email,
                 password: form.password

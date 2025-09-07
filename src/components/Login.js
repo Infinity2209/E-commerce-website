@@ -24,7 +24,7 @@ const Login = ({ onLogin }) => {
         e.preventDefault();
         if (!validateForm()) return;
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/login', form);
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, form);
             onLogin(res.data.token);
             navigate('/');
         } catch (error) {
